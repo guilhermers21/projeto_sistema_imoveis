@@ -1,4 +1,12 @@
 <?php
+session_start();  // Iniciar a sessão
+
+// Verificar se o usuário está logado
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php");  // Redirecionar para a página de login
+    exit();
+}
+
 include 'db_connection.php';
 
 // Busca as pessoas cadastradas para preencher o campo de contribuinte

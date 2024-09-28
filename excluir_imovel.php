@@ -1,6 +1,15 @@
 <?php
 include 'db_connection.php';  // Incluir o arquivo de conexão
 
+session_start();  // Iniciar a sessão
+
+// Verificar se o usuário está logado
+if (!isset($_SESSION['loggedin']) || $_SESSION['loggedin'] !== true) {
+    header("Location: login.php");  // Redirecionar para a página de login
+    exit();
+}
+
+
 // Verificar se o ID foi passado
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
